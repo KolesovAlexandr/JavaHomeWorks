@@ -24,7 +24,7 @@ public class LSDSort {
 		System.out.println("Elapsed = " + (stop - start));
 		
 		start = System.currentTimeMillis();
-		MyLSDSortBt(dataLSD,4);
+		MyLSDSortBt(dataLSD,4);  //4 bytes
 		stop = System.currentTimeMillis();	
 		
 //		for (int i = 0; i < dataLSD.length; i++) {
@@ -70,7 +70,7 @@ public class LSDSort {
 
 	private static int DataByte(int data, int d) {
 
-		data >>= 8*d; //shift right to byte * d
+		data >>>= 8*d; //shift right to byte * d
         data &= 0xff; //mask ...001111111(2)
         return data;
 	}
