@@ -24,7 +24,7 @@ public class LSDSort {
 		System.out.println("Elapsed = " + (stop - start));
 		
 		start = System.currentTimeMillis();
-		MyLSDSortBt(dataLSD,4);  //4 bytes
+		myLSDSortBt(dataLSD,4);  //4 bytes
 		stop = System.currentTimeMillis();	
 		
 //		for (int i = 0; i < dataLSD.length; i++) {
@@ -39,7 +39,7 @@ public class LSDSort {
 		
 	}
 
-	private static void MyLSDSortBt(int[] data, int W) {
+	private static void myLSDSortBt(int[] data, int W) {
 		
 		int R = 256;
 		int N = data.length;
@@ -50,7 +50,7 @@ public class LSDSort {
             int[] count = new int [R + 1];
             
             for (int i = 0; i < N; i++) {
-                count[DataByte(data[i],d) + 1]++;
+                count[dataByte(data[i],d) + 1]++;
             }
             
             for (int r = 0; r < R; r++) {
@@ -58,7 +58,7 @@ public class LSDSort {
             }
             
             for (int i = 0; i < N; i++) {
-                aux[count[DataByte(data[i],d)]++] = data[i];
+                aux[count[dataByte(data[i],d)]++] = data[i];
             }
             
             for (int i = 0; i < N; i++) {
@@ -68,7 +68,7 @@ public class LSDSort {
 				
 	}
 
-	private static int DataByte(int data, int d) {
+	private static int dataByte(int data, int d) {
 
 		data >>>= 8*d; //shift right to byte * d
         data &= 0xff; //mask ...001111111(2)
