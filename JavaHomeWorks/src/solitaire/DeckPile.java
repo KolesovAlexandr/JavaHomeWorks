@@ -34,8 +34,18 @@ class DeckPile extends CardPile {
 
 	public void select(final int tx, final int ty) {
 		if (empty()) {
+			
+				backToDeck();
 			return;
 		}
 		Solitaire.discardPile.addCard(pop());
+	}
+
+	private void backToDeck() {
+		while (!Solitaire.discardPile.empty()){
+			Card comeBack = Solitaire.discardPile.pop();
+			comeBack.flip();
+			addCard(comeBack);
+		}
 	}
 }

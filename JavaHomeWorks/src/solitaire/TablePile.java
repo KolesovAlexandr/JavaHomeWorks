@@ -2,11 +2,13 @@ package solitaire;
 
 import java.awt.Graphics;
 
-class TablePile extends CardPile {
+class TablePile extends MoveCard {
+	private int tablePileCardCount = 0;
 
 	TablePile(final int x, final int y, final int c) {
 		// initialize the parent class
 		super(x, y);
+//		tablePileCardCount = c;
 		// then initialize our pile of cards
 		for (int i = 0; i < c; i++) {
 			addCard(Solitaire.deckPile.pop());
@@ -30,7 +32,8 @@ class TablePile extends CardPile {
 
 	public boolean includes(final int tx, final int ty) {
 		// don't test bottom of card
-		return x <= tx && tx <= x + Card.width && y <= ty;
+		return x <= tx && tx <= x + Card.width && y+(tablePileCardCount-1)*35 <= ty 
+				&& ty<=y+Card.height+(tablePileCardCount-1)*35;
 	}
 
 	public void select(final int tx, final int ty) {
@@ -46,23 +49,10 @@ class TablePile extends CardPile {
 		}
 
 		// else see if any suit pile can take card
-		topCard = pop();
-		for (int i = 0; i < 4; i++) {
-			if (Solitaire.suitPile[i].canTake(topCard)) {
-				Solitaire.suitPile[i].addCard(topCard);
-				return;
-			}
-		}
-		// else see if any other table pile can take card
-		for (int i = 0; i < 7; i++) {
-			if (Solitaire.tableau[i].canTake(topCard)) {
-				Solitaire.tableau[i].addCard(topCard);
-				return;
-			}
-		}
-		// else put it back on our pile
-		addCard(topCard);
+		super.select(tx, ty);
 	}
+
+	
 
 	private int stackDisplay(final Graphics g, final Card aCard) {
 		int localy;
@@ -72,6 +62,17 @@ class TablePile extends CardPile {
 		localy = stackDisplay(g, aCard.link);
 		aCard.draw(g, x, localy);
 		return localy + 35;
+	}
+	@Override
+	public Card pop() {
+		tablePileCardCount--;
+		return super.pop();
+	}
+	@Override
+	public void addCard(Card aCard) {
+		tablePileCardCount++;
+		// TODO Auto-generated method stub
+		super.addCard(aCard);
 	}
 
 }

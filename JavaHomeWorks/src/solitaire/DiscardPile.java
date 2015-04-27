@@ -1,6 +1,6 @@
 package solitaire;
 
-class DiscardPile extends CardPile {
+class DiscardPile extends MoveCard {
 
 	DiscardPile(final int x, final int y) {
 		super(x, y);
@@ -15,22 +15,10 @@ class DiscardPile extends CardPile {
 
 	public void select(final int tx, final int ty) {
 		if (empty()) {
+			
 			return;
 		}
-		Card topCard = pop();
-		for (int i = 0; i < 4; i++) {
-			if (Solitaire.suitPile[i].canTake(topCard)) {
-				Solitaire.suitPile[i].addCard(topCard);
-				return;
-			}
-		}
-		for (int i = 0; i < 7; i++) {
-			if (Solitaire.tableau[i].canTake(topCard)) {
-				Solitaire.tableau[i].addCard(topCard);
-				return;
-			}
-		}
-		// nobody can use it, put it back on our list
-		addCard(topCard);
+		super.select(tx, ty);
+		
 	}
 }
