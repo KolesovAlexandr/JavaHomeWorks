@@ -6,6 +6,8 @@ import java.awt.Graphics;
 class CardPile {
 
 	private Card firstCard;
+	private static CardPile selectCard;
+	private static boolean selected;
 
 	// coordinates of the card pile
 	protected int x;
@@ -62,4 +64,19 @@ class CardPile {
 	public Card top() {
 		return firstCard;
 	}
+	boolean isSelected() {
+		return selected;
+	}
+	
+	public static void setSelectedCard(CardPile cardPile)	{
+	  selectCard = cardPile;		
+	}
+	public static CardPile getSelectedCard()	{
+		return selectCard;
+		
+		
+	}
+	
+	
+	
 }

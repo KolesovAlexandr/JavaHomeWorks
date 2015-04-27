@@ -34,7 +34,25 @@ public class Solitaire extends Applet {
 	public boolean mouseDown(final Event evt, final int x, final int y) {
 		for (int i = 0; i < 13; i++) {
 			if (allPiles[i].includes(x, y)) {
-				allPiles[i].select(x, y);
+//				Card topCard = allPiles[i].top();
+//				if (!topCard.isFaceUp())	{
+//					topCard.flip();
+//				}
+				
+				if (CardPile.getSelectedCard()!=null)	{
+					
+					Card SelectCard = CardPile.getSelectedCard().pop();
+					if (allPiles[i].canTake(SelectCard)) {
+						allPiles[i].addCard(SelectCard);
+					} else {
+					CardPile.getSelectedCard().addCard(SelectCard);
+					}
+					CardPile.setSelectedCard(null);				
+				} else {
+				CardPile.setSelectedCard(allPiles[i]);
+				}
+					
+//				allPiles[i].select(x, y);
 				repaint();
 				return true;
 			}
