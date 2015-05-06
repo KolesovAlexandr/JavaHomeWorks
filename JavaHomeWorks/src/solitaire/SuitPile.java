@@ -14,4 +14,17 @@ class SuitPile extends CardPile {
 		return (aCard.getSuit() == topCard.getSuit())
 				&& (aCard.getRank() == 1 + topCard.getRank());
 	}
+	@Override
+	public void select(int tx, int ty) {
+		if (getSelectedCard()!=null){Card selectCard = getSelectedCard().pop(); 
+			if (canTake(selectCard))	{
+				addCard(selectCard);
+			}
+			else {
+				getSelectedCard().addCard(selectCard);
+				setSelectedCard(null);
+			}
+		}
+//		super.select(tx, ty);
+	}
 }

@@ -1,5 +1,6 @@
 package solitaire;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -31,12 +32,18 @@ class CardPile {
 	}
 
 	public void display(final Graphics g) {
-		g.setColor(Color.black);
+		
+			g.setColor(Color.black);
+		
 		if (firstCard == null) {
 			g.drawRect(x, y, Card.width, Card.height);
 		} else {
 			firstCard.draw(g, x, y);
 		}
+	}
+	public void drawSelectCard(Graphics g) {
+		g.setColor(Color.red);
+		g.drawRect(x, y, Card.width, Card.height);
 	}
 
 	public boolean empty() {
@@ -68,8 +75,8 @@ class CardPile {
 		return selected;
 	}
 	
-	public static void setSelectedCard(CardPile cardPile)	{
-	  selectCard = cardPile;		
+	public static void setSelectedCard(CardPile card)	{
+	  selectCard = card;		
 	}
 	public static CardPile getSelectedCard()	{
 		return selectCard;

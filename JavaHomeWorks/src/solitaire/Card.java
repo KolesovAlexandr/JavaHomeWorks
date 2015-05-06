@@ -46,6 +46,7 @@ class Card {
 		// clear rectangle, draw border
 		g.clearRect(x, y, width, height);
 		g.setColor(Color.black);
+		
 		g.drawRect(x, y, width, height);
 		// draw body of card
 		if (isFaceUp()) {
@@ -91,6 +92,7 @@ class Card {
 			g.drawLine(x + 5, y + 50, x + 45, y + 50);
 		}
 	}
+	
 
 	public boolean isFaceUp() {
 		return faceup;
