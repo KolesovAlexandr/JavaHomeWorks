@@ -1,5 +1,7 @@
 package solitaire;
 
+import java.awt.Graphics;
+
 class DiscardPile extends MoveCard {
 
 	DiscardPile(final int x, final int y) {
@@ -12,6 +14,11 @@ class DiscardPile extends MoveCard {
 		}
 		super.addCard(aCard);
 	}
+	@Override
+	public void display(Graphics g) {
+		// TODO Auto-generated method stub
+		super.display(g);
+}
 
 	public void select(final int tx, final int ty) {
 		if (empty()) {

@@ -60,7 +60,8 @@ class TablePile extends MoveCard {
 			return y;
 		}
 		localy = stackDisplay(g, aCard.link);
-		aCard.draw(g, x, localy);
+		aCard.draw(g, x, localy,isSelected);
+		//isSelected=false;
 //		if (getSelectedCard()!=null && aCard==getSelectedCard().top())
 //		{
 //			getSelectedCard().top();

@@ -3,6 +3,7 @@ package solitaire;
 public class MoveCard extends CardPile {
 	
 	static CardPile selectedPile;
+	static boolean isSelected;
 
 	MoveCard(int xl, int yl) {
 		super(xl, yl);
@@ -18,6 +19,7 @@ public class MoveCard extends CardPile {
 		
 			if (getSelectedCard()==null)	{
 				setSelectedCard(this);
+				isSelected=true;
 			}
 			else {
 				Card selectCard = getSelectedCard().pop(); 
@@ -30,6 +32,7 @@ public class MoveCard extends CardPile {
 				}
 			}
 		}
+		
 		
 		
 		
@@ -49,5 +52,6 @@ public class MoveCard extends CardPile {
 //		// else put it back on our pile
 //		addCard(topCard);
 	}
+
 
 }

@@ -38,7 +38,7 @@ class CardPile {
 		if (firstCard == null) {
 			g.drawRect(x, y, Card.width, Card.height);
 		} else {
-			firstCard.draw(g, x, y);
+			firstCard.draw(g, x, y,MoveCard.isSelected);
 		}
 	}
 	public void drawSelectCard(Graphics g) {
@@ -71,9 +71,9 @@ class CardPile {
 	public Card top() {
 		return firstCard;
 	}
-	boolean isSelected() {
-		return selected;
-	}
+//	boolean isSelected() {
+//		return selected;
+//	}
 	
 	public static void setSelectedCard(CardPile card)	{
 	  selectCard = card;		
