@@ -36,9 +36,11 @@ class DeckPile extends CardPile {
 		if (empty()) {
 			
 				backToDeck();
+				setSelectedCard(null);
 			return;
 		}
 		Solitaire.discardPile.addCard(pop());
+		setSelectedCard(null);
 	}
 
 	private void backToDeck() {
