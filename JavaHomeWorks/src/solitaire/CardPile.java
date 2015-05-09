@@ -7,8 +7,10 @@ import java.awt.Graphics;
 class CardPile {
 
 	private Card firstCard;
+	private Card lastCard;
 	private static CardPile selectCard;
 	private static boolean selected;
+	
 
 	// coordinates of the card pile
 	protected int x;
@@ -83,7 +85,29 @@ class CardPile {
 		
 		
 	}
+
+	public CardPile popIsFaceUp() {
+		
+		CardPile result = new CardPile(0, 0);
+		while(top().isFaceUp()){
+			lastCard = pop();
+			result.addCard(lastCard);
+			
+			
+		}
+		return result;
+		
+	}
 	
+	Card getLastCard() {
+		return lastCard;
+	}
+
+	public void addCardPile(CardPile selectCardPile) {
+		while (selectCardPile != null) {
+			addCard(selectCardPile.pop());
+		}
+	}
 	
 	
 }

@@ -23,13 +23,14 @@ public class MoveCard extends CardPile {
 			}
 			else {
 				Card selectCard = getSelectedCard().pop(); 
+				
+//				CardPile selectCard = getSelectedCard().popIsFaceUp();
 				if (canTake(selectCard))	{
 					addCard(selectCard);
 				}
 				else {
-					getSelectedCard().addCard(selectCard);
-					setSelectedCard(null);
-				}
+					getSelectedCard().addCard(selectCard);				}
+				setSelectedCard(null);
 			}
 		}
 		
