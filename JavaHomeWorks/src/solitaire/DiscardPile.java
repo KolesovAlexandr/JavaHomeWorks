@@ -3,6 +3,8 @@ package solitaire;
 import java.awt.Graphics;
 
 class DiscardPile extends MoveCard {
+	
+	
 
 	DiscardPile(final int x, final int y) {
 		super(x, y);

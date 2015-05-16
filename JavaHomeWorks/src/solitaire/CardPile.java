@@ -87,15 +87,16 @@ class CardPile {
 	}
 
 	public CardPile popIsFaceUp() {
-		
-		CardPile result = new CardPile(0, 0);
-		while(top().isFaceUp()){
-			lastCard = pop();
-			result.addCard(lastCard);
-			
-			
-		}
-		return result;
+		return this;
+//		
+//		CardPile result = new CardPile(0, 0);
+//		while(top().isFaceUp()){
+//			lastCard = pop();
+//			result.addCard(lastCard);
+//			
+//			
+//		}
+//		return result;
 		
 	}
 	
@@ -107,6 +108,18 @@ class CardPile {
 		while (selectCardPile != null) {
 			addCard(selectCardPile.pop());
 		}
+	}
+
+	public Card lastFaceUp(Card card) {
+
+		if (card!=null)	{
+			if (card.link!=null)	{
+				if (card.isFaceUp()) {
+					return lastFaceUp(card.link);
+					}
+				}
+			}
+		return card;
 	}
 	
 	

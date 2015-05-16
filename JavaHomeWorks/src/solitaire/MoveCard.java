@@ -4,11 +4,15 @@ public class MoveCard extends CardPile {
 	
 	static CardPile selectedPile;
 	static boolean isSelected;
+	static boolean notDiscard;
 
 	MoveCard(int xl, int yl) {
 		super(xl, yl);
 		// TODO Auto-generated constructor stub
 	}
+//	boolean isNotDiscard()	{
+//		return false;
+//		}
 	
 	public void select(final int tx, final int ty) {
 		//Card topCard = top();
@@ -19,6 +23,7 @@ public class MoveCard extends CardPile {
 		
 			if (getSelectedCard()==null)	{
 				setSelectedCard(this);
+				notDiscard = false;
 				isSelected=true;
 			}
 			else {

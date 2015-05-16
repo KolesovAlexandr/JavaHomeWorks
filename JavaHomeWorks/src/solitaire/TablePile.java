@@ -16,6 +16,10 @@ class TablePile extends MoveCard {
 		// flip topmost card face up
 		top().flip();
 	}
+	public TablePile() {
+		super(0,0);
+		// TODO Auto-generated constructor stub
+	}
 
 	public boolean canTake(final Card aCard) {
 		if (empty()) {
@@ -37,19 +41,56 @@ class TablePile extends MoveCard {
 	}
 
 	public void select(final int tx, final int ty) {
-		if (empty()) {
-			return;
-		}
+//		if (empty()) {
+//			return;
+//		}
 
 		// if face down, then flip
 		Card topCard = top();
-		if (!topCard.isFaceUp()) {
+		if (!empty() && !topCard.isFaceUp()) {
 			topCard.flip();
 			return;
+		} else {
+		
+			if (getSelectedCard()==null && !empty())	{
+				setSelectedCard(this);
+				notDiscard=true;
+				isSelected=true;
+			}
+			else {
+//				Card selectCard = getSelectedCard().pop(); 
+//				Card selectCard = getSelectedCard().lastFaceUp(getSelectedCard().top());
+				
+				CardPile selectCardPile = null;
+				Card selectCard;
+				if (notDiscard) {
+					// добавить цикл чтоб можно было перемещать из faceUP
+					
+					selectCardPile = getSelectedCard().popIsFaceUp();
+					
+					if (canTake(selectCardPile.top()))	{
+						while (selectCardPile.top()!=null)	{
+							addCard(selectCardPile.pop());
+		//					addAllCard(selectCard);
+						}
+					}
+					else {
+						while (selectCardPile.top()!=null)	{
+							getSelectedCard().addCard(selectCardPile.pop());				}						
+					}
+				}	else	{
+					selectCard = getSelectedCard().pop();
+					if (canTake(selectCard))	{
+						addCard(selectCard);
+					}
+					else {
+						getSelectedCard().addCard(selectCard);				}
+				}
+				
+				setSelectedCard(null);
+			}
 		}
-
-		// else see if any suit pile can take card
-		super.select(tx, ty);
+//		super.select(tx, ty);
 	}
 
 	
@@ -81,5 +122,17 @@ class TablePile extends MoveCard {
 		// TODO Auto-generated method stub
 		super.addCard(aCard);
 	}
+	@Override
+	public TablePile popIsFaceUp() {
+		
+		TablePile cardIsFaceUp = new TablePile();
+		while (top()!=null && top().isFaceUp()){
+			cardIsFaceUp.addCard(pop());
+		}
+		return cardIsFaceUp;
+		
+		
+	}
+	
 
 }
