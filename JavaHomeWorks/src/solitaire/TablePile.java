@@ -64,20 +64,31 @@ class TablePile extends MoveCard {
 				CardPile selectCardPile = null;
 				Card selectCard;
 				if (notDiscard) {
-					// добавить цикл чтоб можно было перемещать из faceUP
 					
 					selectCardPile = getSelectedCard().popIsFaceUp();
 					
-					if (canTake(selectCardPile.top()))	{
-						while (selectCardPile.top()!=null)	{
+//					if (canTake(selectCardPile.top()))	{
+//						while (selectCardPile.top()!=null)	{
+//							addCard(selectCardPile.pop());
+//		//					addAllCard(selectCard);
+//						}
+//					}
+//					else {
+//						while (selectCardPile.top()!=null)	{
+//							getSelectedCard().addCard(selectCardPile.pop());				}						
+//					}
+					while (selectCardPile.top()!=null)	{
+						if (canTake(selectCardPile.top()))	{
 							addCard(selectCardPile.pop());
-		//					addAllCard(selectCard);
+						
+					}
+						else {
+							getSelectedCard().addCard(selectCardPile.pop());
 						}
+						
 					}
-					else {
-						while (selectCardPile.top()!=null)	{
-							getSelectedCard().addCard(selectCardPile.pop());				}						
-					}
+					
+//					
 				}	else	{
 					selectCard = getSelectedCard().pop();
 					if (canTake(selectCard))	{
