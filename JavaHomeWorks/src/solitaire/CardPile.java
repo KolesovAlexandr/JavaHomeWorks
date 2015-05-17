@@ -7,9 +7,7 @@ import java.awt.Graphics;
 class CardPile {
 
 	private Card firstCard;
-	private Card lastCard;
 	private static CardPile selectCard;
-	private static boolean selected;
 	
 
 	// coordinates of the card pile
@@ -73,9 +71,6 @@ class CardPile {
 	public Card top() {
 		return firstCard;
 	}
-//	boolean isSelected() {
-//		return selected;
-//	}
 	
 	public static void setSelectedCard(CardPile card)	{
 	  selectCard = card;		
@@ -88,39 +83,5 @@ class CardPile {
 
 	public CardPile popIsFaceUp() {
 		return this;
-//		
-//		CardPile result = new CardPile(0, 0);
-//		while(top().isFaceUp()){
-//			lastCard = pop();
-//			result.addCard(lastCard);
-//			
-//			
-//		}
-//		return result;
-		
 	}
-	
-	Card getLastCard() {
-		return lastCard;
-	}
-
-	public void addCardPile(CardPile selectCardPile) {
-		while (selectCardPile != null) {
-			addCard(selectCardPile.pop());
-		}
-	}
-
-	public Card lastFaceUp(Card card) {
-
-		if (card!=null)	{
-			if (card.link!=null)	{
-				if (card.isFaceUp()) {
-					return lastFaceUp(card.link);
-					}
-				}
-			}
-		return card;
-	}
-	
-	
 }

@@ -24,7 +24,6 @@ class DiscardPile extends MoveCard {
 
 	public void select(final int tx, final int ty) {
 		if (empty()) {
-			
 			return;
 		}
 		super.select(tx, ty);

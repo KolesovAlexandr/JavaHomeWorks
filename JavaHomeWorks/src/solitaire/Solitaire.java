@@ -31,8 +31,6 @@ public class Solitaire extends Applet {
 		}
 	}
 
-
-
 	public boolean mouseDown(final Event evt, final int x, final int y) {
 		for (int i = 0; i < 13; i++) {
 			if (allPiles[i].includes(x, y)) {

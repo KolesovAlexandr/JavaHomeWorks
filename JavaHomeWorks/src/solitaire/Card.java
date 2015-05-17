@@ -39,7 +39,7 @@ class Card {
 		}
 		return black;
 	}
-
+	//add new parameter 
 	public void draw(final Graphics g, final int x, final int y, boolean selectedCard) {
 		String names[] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 				"J", "Q", "K" };

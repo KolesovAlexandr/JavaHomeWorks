@@ -25,6 +25,5 @@ class SuitPile extends CardPile {
 				setSelectedCard(null);
 			}
 		}
-//		super.select(tx, ty);
 	}
 }
