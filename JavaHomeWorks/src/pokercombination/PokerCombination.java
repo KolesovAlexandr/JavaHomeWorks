@@ -1,4 +1,4 @@
-package solitaire;
+package pokercombination;
 
 import java.util.HashMap;
 import java.util.Map;

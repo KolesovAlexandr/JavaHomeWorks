@@ -1,4 +1,4 @@
-package solitaire;
+package pokercombination;
 
 public class UsePokerCombination {
 	public static void main(String[] args) {
